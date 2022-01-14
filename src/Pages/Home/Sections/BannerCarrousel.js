@@ -49,7 +49,7 @@ const BanerCarrousel = styled.div`
 
 
     .btn-content{
-        height: 40px;
+        /* height: 40px; */
         display: flex;
         width: 160px;
     }

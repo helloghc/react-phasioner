@@ -1,21 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export default function ButtonPrimary({text}) {
+export default function ButtonSecondary({text}) {
     return (
-        <ButtonP>
-          {text}  
-        </ButtonP>
+        <ButtonS>
+            {text}
+        </ButtonS>
     )
 }
 
-
-var ButtonP = styled.button`
+var ButtonS = styled.button`
     width: 100%;
-    background-color: #11D4E7;
-    border: none;
+    background: transparent;
+    border: #11D4E7 solid 2px;
     border-radius: 5px;
-    color: #000;
+    color: #11D4E7;
     font-weight: bold;
     font-size: 1em;
     text-align: center;
