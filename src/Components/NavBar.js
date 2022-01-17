@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 
 export default function NavBar() {
 
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
     const [indexItem, setIndexItem] = useState(null);
 
     onselect = ({index}) => {
@@ -55,9 +55,11 @@ export default function NavBar() {
                             <Linked onClick={() => {
                                 onselect({index: 2});
                             }}>NIÑOS</Linked>
-                            <Linked onClick={() => {
-                                onselect({index:  3});
-                            }}>DISEÑADORES</Linked>
+                            <Link to={'/designers'} >
+                                <Linked onClick={() => {
+                                    onselect({index:  3});
+                                }}>DISEÑADORES</Linked>
+                            </Link>
                             <DropMenu isOpen={isOpen}>
                                 <div>
                                     <p className='item-menu'>Todo</p>

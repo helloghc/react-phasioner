@@ -2,23 +2,26 @@ import React from 'react'
 import styled from 'styled-components'
 import Pant from '../../../Images/pantalon.jpg'
 import FavOn from '../../../Images/favoriteoff.svg'
+import { Link } from 'react-router-dom'
 
 
 export default function ProductCard({name, img, price}) {
     return (
-        <CardContent>
-            <img src={Pant} alt='hola'/>
-            <div className='title'>
-                <div className='line'></div>
-                <h4>{name}</h4>
-                <div className='line'></div>
-            </div>
-            <div className='actions'>
-                <div></div>
-                <p>$ {price} MXN</p>
-                <img src={FavOn} alt='favorito'/>
-            </div>
-        </CardContent>
+        <Link to={`/${name}`}>      
+            <CardContent>
+                <img src={Pant} alt='hola'/>
+                <div className='title'>
+                    <div className='line'></div>
+                    <h4>{name}</h4>
+                    <div className='line'></div>
+                </div>
+                <div className='actions'>
+                    <div></div>
+                    <p>$ {price} MXN</p>
+                    <img src={FavOn} alt='favorito'/>
+                </div>
+            </CardContent>
+        </Link>
     )
 }
 
