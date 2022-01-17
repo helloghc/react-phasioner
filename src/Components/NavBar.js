@@ -7,6 +7,7 @@ import Head from './Head';
 import Logo from '../Images/logonav.svg'
 import LogoPro from '../Images/logopro.svg'
 import ButtonPrimary from './ButtonPrimary';
+import { Link } from 'react-router-dom';
 
 
 
@@ -17,7 +18,9 @@ export default function NavBar() {
             <div className='conteiner-nav'>
                 <nav>
                     <div className='logo-content'>
-                        <img src={Logo} alt='logo'/>
+                        <Link to='/'>
+                            <img src={Logo} alt='logo'/>
+                        </Link>
                     </div>
                     <div className='nav-content'>
                         <ul className='nav-list'>
@@ -26,12 +29,13 @@ export default function NavBar() {
                             <li>NIÑOS</li>
                             <li>DISEÑADORES</li>
                         </ul>
-                        <img src={LogoPro} alt='logo'/>
+                        <Link to='/pro'>
+                            <img src={LogoPro} alt='logo'/>
+                        </Link>
                         <div className='btn-content'>
-
-                        <ButtonPrimary
-                            text='¡Vender Ya!'
-                        />
+                            <ButtonPrimary
+                                text='¡Vender Ya!'
+                            />
                         </div>
                     </div>
                 </nav>
@@ -68,7 +72,8 @@ const Navbar = styled.nav`
     .nav-content img{
         height: 30px;
         display: flex;
-        padding: 10px 0px;
+        padding: 10px 20px;
+        cursor: pointer;
     }
 
     .nav-content ul {

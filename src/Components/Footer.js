@@ -13,6 +13,7 @@ import IconPhone from '../Images/phonofooter.svg'
 import IconEmail from '../Images/emailblack.svg'
 import InputTextPrimary from './InputTextPrimary'
 
+
 export default function Footer() {
     return (
         <ContainFooter>
@@ -79,12 +80,13 @@ const ContainFooter = styled.footer`
 
     .port{
         width: 100%;
-        height: 50vh;
+        height: 60vh;
     }
 
     .port img{
         width: 100%;
         height: 100%;
+        object-fit: cover;
     }
 
     .info{
