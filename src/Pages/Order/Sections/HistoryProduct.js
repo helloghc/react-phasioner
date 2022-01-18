@@ -3,7 +3,6 @@ import styled from 'styled-components'
 
 
 // Images
-
 import Vestido from '../../../Images/vestido.jpg'
 
 export default function HistoryProduct() {
@@ -12,11 +11,10 @@ export default function HistoryProduct() {
             <img src={Vestido} alt='Vestido' className='image-card'/>
             <div className='info-card'>
                 <h3>Vestido ZARA</h3>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
                     Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-
-    
-                </p> 
+                </p>
                 <h1>$200 MXN</h1>
             </div>
         </CardHistory>
@@ -34,5 +32,10 @@ const CardHistory = styled.div`
 
     .info-card{
         padding: 0em 2em;
+    }
+
+    .info-card h3{
+        padding: 0em;
+        margin: 0em;
     }
 `;
