@@ -5,13 +5,16 @@ import ButtonPrimary from '../../../Components/ButtonPrimary'
 import User from '../../../Images/user1.jpg'
 import Start from '../../../Images/star.svg'
 import ButtonSecondary from '../../../Components/ButtonSecondary';
+import { Link } from 'react-router-dom';
 
 export default function Resume() {
     return (
         <ResumeConten>
             <h1 className='produc-name'>Vestido ZARA</h1>
             <h2 className='price'>$300</h2>
-            <ButtonPrimary text={'Comprar ahora'}/>
+            <Link to={'/order'}>
+                <ButtonPrimary text={'Comprar ahora'}/>
+            </Link>
             <div className='description'>
                 <p><strong>Etiqueta de marca: </strong> ZARA</p>
                 <p><strong>Tipo de prenda: </strong> Vestido</p>
@@ -30,6 +33,7 @@ export default function Resume() {
                 <div className='user-actions'>
                     <ButtonSecondary text={'Seguir'}/>
                     <div className='space'></div>
+                    
                     <ButtonPrimary text={'Ver todo'}/>
                 </div>
             </div>
