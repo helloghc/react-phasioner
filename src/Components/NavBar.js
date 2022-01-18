@@ -143,10 +143,10 @@ const DropMenu = styled.menu`
         height: 14em;
         width: 40%;
 
-
+    /* 
       &:hover {
         display: flex;
-      }
+      } */
 
       .item-menu{
         width: 5em;

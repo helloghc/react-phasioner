@@ -30,30 +30,8 @@ export default function ProductsList() {
                 name={'PANTALON CALVIN KLEIN'}
                 price={400}
             />
-            <ProductCard
-                name={'PANTALON CALVIN KLEIN'}
-                price={400}
-            />
-            <ProductCard
-                name={'PANTALON CALVIN KLEIN'}
-                price={400}
-            />
-            <ProductCard
-                name={'PANTALON CALVIN KLEIN'}
-                price={400}
-            />
-            <ProductCard
-                name={'PANTALON CALVIN KLEIN'}
-                price={400}
-            />
-            <ProductCard
-                name={'PANTALON CALVIN KLEIN'}
-                price={400}
-            />
-            <ProductCard
-                name={'PANTALON CALVIN KLEIN'}
-                price={400}
-            />
+         
+            
         </ListContainer>
     )
 }
