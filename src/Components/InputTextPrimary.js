@@ -12,20 +12,21 @@ export default function InputTextPrimary({placeholder}) {
 
 
 const InputContain = styled.div`
-
     position: relative;
-
+    
     .container__input {
+        width: 100%;
         height: 2.4em;
         border: none;
         border-bottom: 1px solid #000;
-
+        font-size: 1.2em;
     }
 
     .container__input:not(:placeholder-shown) + .container__label {
         background: #fff;
         transform: translate(0, -70%);
         opacity: 1;
+        border: none;
     }
     .container__label {
         left: 3px;
