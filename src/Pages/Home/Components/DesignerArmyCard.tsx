@@ -1,19 +1,20 @@
 import React from 'react'
-import User from '../../../Images/user1.jpg'
+// import User from '../../../Images/user1.jpg'
 import AvatarUser from '../../../Components/AvatarUser'
 import styled from 'styled-components'
 import Start from '../../../Images/star.svg'
 import ButtonSecondary from '../../../Components/ButtonSecondary'
 import ProductCard from './ProductCard'
+import { ArmaryModel } from '../../../Models/armary_model'
 
-export default function DesignerArmyCard() {
+export default function DesignerArmyCard({armary}: {armary: ArmaryModel}) {
     return (
         <DesignerCard>
             <div className='user-contain'>
                 <div className='user-card'>
-                    <AvatarUser src={User}/>
-                    <div className='user-info'>
-                        <h3>Maria Extein</h3>
+                    <AvatarUser src={armary.user.photoURL}/>
+                    <div className='user-info'>     
+                        <h3>{armary.user.name}</h3>
                         <p><img src={Start} alt='icon'/> 4.6</p>
                     </div>
                 </div>
@@ -22,22 +23,16 @@ export default function DesignerArmyCard() {
                 </div>
             </div>
             <div className='products-contain'>
-                <ProductCard 
-                    name={'PANTALON CALVIN KLEIN'}
-                    price={1200}
-                />
-                <ProductCard
-                    name={'PANTALON CALVIN KLEIN'}
-                    price={1200}
-                />
-                <ProductCard 
-                    name={'PANTALON CALVIN KLEIN'}
-                    price={1200}
-                />
-                <ProductCard 
-                    name={'PANTALON CALVIN KLEIN'}
-                    price={1200}
-                />
+                {
+                    armary.products.map((prod)=>  {
+                        return  <ProductCard 
+                        name={prod.titleProduct}
+                        img={prod.image?.at(0)}
+                        price={prod.price}
+                    />
+                    })
+                }
+               
             </div>
         </DesignerCard>
     )

@@ -5,7 +5,7 @@ import FavOn from '../../../Images/favoriteoff.svg'
 import { Link } from 'wouter'
 
 
-export default function ProductCard({name, img, price}) {
+export default function ProductCard({name, img, price}: {name: string, img: string, price: string | undefined}) {
     return (
         <Link href={`/${name}`}>      
             <CardContent>
@@ -33,6 +33,8 @@ const CardContent = styled.div`
 
     img{
         width: 100%;
+        height: 15em;
+        background-size: cover;
     }
 
     .title{
@@ -53,14 +55,19 @@ const CardContent = styled.div`
         width: 10%;
         background: #000;
     }
-
+    
     .actions{
         display: flex;
+        padding: 0;
+        margin: 0;
         justify-content: space-between;
+        align-items: center;
     }
 
     .actions img{
         width: 2em;
+        height: 2em;
+        background-size: cover;
     }
 
     @media screen and (max-width: 1000px){

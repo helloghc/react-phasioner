@@ -8,7 +8,6 @@ export default function useSpotlight () {
     const getSpotProduts = useCallback( async () => {
         const response = await getSpotligth();
         const products = await response.json();
-        console.log(products);
         setSpotProducts(products);
     }, [setSpotProducts])
 

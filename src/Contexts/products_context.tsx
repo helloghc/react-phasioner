@@ -1,4 +1,5 @@
 import React, { useState, createContext, ReactNode } from 'react'
+import { ArmaryModel } from '../Models/armary_model';
 import { ProductModel } from '../Models/product_model';
 import { UserModel } from '../Models/user_models'
 
@@ -18,6 +19,7 @@ const ProductContext = createContext<any>(dataDefault);
 export const ProductContextProvider = ({children}: AuxProps) => {
   const [favs, setFavs] = useState([])
   const [spotProducts, setSpotProducts] = useState<ProductModel[]>()
+  const [armarys, setArmarys] = useState<ArmaryModel[]>([])
   const [products, setProducts] = useState<ProductModel>()
 
 //   useEffect(() => {
@@ -27,12 +29,14 @@ export const ProductContextProvider = ({children}: AuxProps) => {
 
   return (
     <ProductContext.Provider value={{
-           favs,
-           setFavs,
-           spotProducts,
-           setSpotProducts,
-           products,
-           setProducts,
+            favs,
+            setFavs,
+            spotProducts,
+            setSpotProducts,
+            products,
+            setProducts,
+            armarys,
+            setArmarys,
           }}>
       {children}
     </ProductContext.Provider>

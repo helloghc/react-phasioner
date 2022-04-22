@@ -13,6 +13,7 @@ import OrderPage from './Pages/Order/OrderPage';
 import NavBar from './Components/NavBar';
 import Footer from './Components/Footer';
 import { ProductContextProvider } from './Contexts/products_context';
+import Register from './Pages/Auth/register';
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
               {params => <HomePage />}
             </Route>
             <Route path="/login" component={Login} /> 
-            <Route path="/register" component={Login} /> 
+            <Route path="/register" component={Register} /> 
             <Route path="/pro" component={ProPage} />
             <Route path="/profile/:id" >
               {params => <ProfilePage id={params.id}/>}
