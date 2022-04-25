@@ -33,7 +33,9 @@ function App() {
             </Route>
             <Route path="/category/:id" component={CategoriesPage} />
             <Route path="/designers" component={DesignerPage} />
-            <Route path="/:id" component={DetailsPage} />
+            <Route path="/:id">
+              {params => <DetailsPage prodID={params.id}/>}
+            </Route>
             <Route path="/order" component={OrderPage} />
           </Switch>
           <Footer/>

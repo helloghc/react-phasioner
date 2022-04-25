@@ -6,27 +6,28 @@ import User from '../../../Images/user1.jpg'
 import Start from '../../../Images/star.svg'
 import ButtonSecondary from '../../../Components/ButtonSecondary';
 import { Link } from 'wouter';
+import { ProductModel } from '../../../Models/product_model';
+import { UserModel } from '../../../Models/user_models';
 
-export default function Resume() {
+export default function Resume({ prod, user }: { prod: ProductModel, user: UserModel }) {
     return (
         <ResumeConten>
-            <h1 className='produc-name'>Vestido ZARA</h1>
-            <h2 className='price'>$300</h2>
+            <h1 className='produc-name'>{prod.titleProduct}</h1>
+            <h2 className='price'>${prod.price}</h2>
             <Link href={'/order'}>
                 <ButtonPrimary text={'Comprar ahora'}/>
             </Link>
             <div className='description'>
-                <p><strong>Etiqueta de marca: </strong> ZARA</p>
-                <p><strong>Tipo de prenda: </strong> Vestido</p>
-                <p><strong>Estado: </strong> Usado como nuevo</p>
-                <p><strong>Estilo: </strong> Clasico</p>
-                <p><strong>Talla: </strong> 26 de marca ZARA</p>
+                <p><strong>Etiqueta de marca: </strong> {prod.brand}</p>
+                <p><strong>Tipo de prenda: </strong> {prod.garment}</p>
+                <p><strong>Estado: </strong> {prod.status}</p>
+                <p><strong>Talla: </strong> {prod.wails}</p>
             </div>
             <div className='user-contain'>
                 <div className='user-card'>
-                    <AvatarUser src={User}/>
+                    <AvatarUser src={user.photoURL}/>
                     <div className='user-info'>
-                        <h3>Maria Extein</h3>
+                        <h3>{user.name}</h3>
                         <p><img src={Start} alt='icon'/> 4.6</p>
                     </div>
                 </div>

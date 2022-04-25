@@ -3,21 +3,22 @@ import styled from 'styled-components'
 // import Pant from '../../../Images/pantalon.jpg'
 import FavOn from '../../../Images/favoriteoff.svg'
 import { Link } from 'wouter'
+import { ProductModel } from '../../../Models/product_model'
 
 
-export default function ProductCard({name, img, price}: {name: string, img: string, price: string | undefined}) {
+export default function ProductCard({product}: {product: ProductModel}) {
     return (
-        <Link href={`/${name}`}>      
+        <Link href={`/${product.id}`}>      
             <CardContent>
-                <img src={img} alt='hola'/>
+                <img src={product.image?.at(0)} alt='hola'/>
                 <div className='title'>
                     <div className='line'></div>
-                    <h4>{name}</h4>
+                    <h4>{product.titleProduct.substring(0, 20)}</h4>
                     <div className='line'></div>
                 </div>
                 <div className='actions'>
                     <div></div>
-                    <p>$ {price} MXN</p>
+                    <p>$ {product.price} MXN</p>
                     <img src={FavOn} alt='favorito'/>
                 </div>
             </CardContent>
@@ -27,14 +28,14 @@ export default function ProductCard({name, img, price}: {name: string, img: stri
 
 
 const CardContent = styled.div`
-    width: 15em;
+    /* width: 15em; */
     cursor: pointer;
     margin-bottom: 2em;
 
     img{
         width: 100%;
-        height: 15em;
-        background-size: cover;
+        height: 10em;
+        background-size: contain;
     }
 
     .title{
@@ -71,6 +72,6 @@ const CardContent = styled.div`
     }
 
     @media screen and (max-width: 1000px){
-        width: 9rem;
+        /* width: 9rem; */
     }
 `;

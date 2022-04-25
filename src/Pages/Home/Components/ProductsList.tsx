@@ -19,9 +19,7 @@ export default function ProductsList() {
                 spotProducts?.map((product: ProductModel) => (
                     <ProductCard 
                         key={product.id} 
-                        name={product.titleProduct} 
-                        img={product.image?.at(0)}
-                        price={product.price}
+                        product={product}
                         />
                 )) : null
             }
@@ -33,8 +31,9 @@ export default function ProductsList() {
 
 const ListContainer = styled.section`
     width: 100%;
-    display: flex;
-    padding-top: 2em;
-    flex-wrap: wrap;
+    display: grid;
+        padding-top: 2em;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 2fr));
+        grid-gap: 2em;
     justify-content: space-between;
 `;

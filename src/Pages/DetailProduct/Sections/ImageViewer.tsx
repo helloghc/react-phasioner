@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 
 // images 
-import Vestido from '../../,,/../../Images/vestido.jpg'
+// import Vestido from '../../,,/../../Images/vestido.jpg'
 
 // icons
 import favorite from '../../../Images/favoriteoff.svg'
@@ -12,13 +12,21 @@ import Logowpp from '../../../Images/wppblack.svg'
 import LogoFb from '../../../Images/fbblack.svg'
 import LogoYT from '../../../Images/ytblack.svg'
 import LogoIG from '../../../Images/instablack.svg'
+import { ProductModel } from '../../../Models/product_model'
 
-export default function ImageViewer() {
+export default function ImageViewer({ prod }: { prod: ProductModel }) {
+
+    const [ image, setImage ] = useState(prod.image?.at(0));
+
+    const handleImage = (image: string) => {
+        setImage(image);
+    }
+
     return (
         <ViewerConten>
             <div className='conten-data'>
                 <div className='conten'>
-                    <img src={Vestido} alt='Vestido'  className='image-big'/>
+                    <img src={image} alt='Vestido'  className='image-big'/>
                     <div className='footimage'>
                         <div className='addfav'>
                             <img src={favorite} alt='Vestido'  className='image-small'/>
@@ -37,9 +45,13 @@ export default function ImageViewer() {
                    
                 </div>
                 <div className='list-image'>
-                    <img src={Vestido} alt='Vestido' className='image-tile'/>
-                    <img src={Vestido} alt='Vestido' className='image-tile'/>
-                    <img src={Vestido} alt='Vestido' className='image-tile'/>
+                    {
+                        prod.image!.map((img) => {
+                            return <div onClick={()=>{handleImage(img)}}>
+                                <img src={img} alt='Vestido' className='image-tile'/>
+                            </div> 
+                        })
+                    }
                 </div>
             </div>
             <br/>
@@ -102,27 +114,31 @@ const ViewerConten = styled.div`
 
     .conten-data{
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: row;
     }
 
     .conten{
-        width: 100%;
+        /* width: 24em; */
         margin-right: 2em;
         display: block;
     }
 
     .image-big {
-        /* height: 100%; */
+        height: 100%;
+        min-width: 15em;
+        width: 100%;
         object-fit: cover;
     }
 
     .list-image{
-        /* width: 10em; */
+        min-width: 5em;
+        width: calc(50% - 10vw);
         display: flex;
         flex-direction: column;
     }
-
+    
     .image-tile{
+        width: 100%;
         margin-bottom: 2em;
         cursor: pointer;
     }
@@ -130,8 +146,17 @@ const ViewerConten = styled.div`
     @media screen and (max-width: 768px) {
         .image-big {
             width: 100%;
+            height: 40vh;
             object-fit: cover;
         }
+
+
+        .conten-data{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+
 
         .conten{
             width: 100%;

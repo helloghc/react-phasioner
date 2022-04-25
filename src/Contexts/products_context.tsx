@@ -21,6 +21,7 @@ export const ProductContextProvider = ({children}: AuxProps) => {
   const [spotProducts, setSpotProducts] = useState<ProductModel[]>()
   const [armarys, setArmarys] = useState<ArmaryModel[]>([])
   const [products, setProducts] = useState<ProductModel>()
+  const [detailprod, setDetailProd] = useState<ProductModel>()
 
 //   useEffect(() => {
 //     if (!jwt) return setFavs([])
@@ -37,6 +38,8 @@ export const ProductContextProvider = ({children}: AuxProps) => {
             setProducts,
             armarys,
             setArmarys,
+            detailprod,
+            setDetailProd,
           }}>
       {children}
     </ProductContext.Provider>

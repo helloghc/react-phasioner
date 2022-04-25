@@ -26,9 +26,8 @@ export default function DesignerArmyCard({armary}: {armary: ArmaryModel}) {
                 {
                     armary.products.map((prod)=>  {
                         return  <ProductCard 
-                        name={prod.titleProduct}
-                        img={prod.image?.at(0)}
-                        price={prod.price}
+                        key={prod.id}
+                        product={prod}
                     />
                     })
                 }
@@ -84,11 +83,13 @@ const DesignerCard = styled.div`
 
     .products-contain{
         width: 100%;
-        display: flex;
+        display: grid;
         padding-top: 2em;
-        flex-wrap: wrap;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 2fr));
+        grid-gap: 3em;
         justify-content: space-between;
     }
+
 `;
 
 

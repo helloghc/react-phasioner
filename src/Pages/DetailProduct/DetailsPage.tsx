@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import ImageViewer from './Sections/ImageViewer';
 import Resume from './Sections/Resume';
@@ -9,34 +9,55 @@ import ProductsList from '../Home/Components/ProductsList'
 import ButtonPrimary from '../../Components/ButtonPrimary'
 
 import TitleLine from '../../Components/TitleLine'
+import useProduct from '../../Hooks/useProducts';
+import { DetailsProductModel } from '../../Models/detail_prod_model';
+import Loader from '../../Components/loader';
 
 
 
-export default function DetailsPage() {
+
+export default function DetailsPage({ prodID }: { prodID: string }) {
+
+    const { detailprod, getDetailProduts, isLoadDetail }
+    : {detailprod: DetailsProductModel, getDetailProduts: ({id}: {id:string}) => {}, isLoadDetail: boolean} = useProduct();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        getDetailProduts({ id: prodID });
+
+    } , [getDetailProduts, prodID])
+
     return (
         <DetailCont>
-            <div className='conteno'>
+            {
+                !isLoadDetail ?
+                <div className='conteno'>
                 <div className='rute-path'>
-                    <h4>Inicio / Mujer / Vestidos / Vestido ZARA</h4>
+                    <h4>Inicio / {detailprod.productData?.category} / {detailprod.productData?.garment} / {detailprod.productData?.titleProduct}</h4>
                 </div>
 
                 <div className='detail-product'>
-                    <ImageViewer />
-                    <Resume />
+                    <ImageViewer prod={detailprod.productData!}/>
+                    <Resume 
+                        user={detailprod.userData!}
+                        prod={detailprod.productData!}
+                    />
                 </div>
 
                 <div className='more'>
-                <TitleLine text={'Mas de este Phasioner'}/>
-                <ProductsList />
-                <div className='view-more'>
-                    <div className='line'></div>
-                    <div className='btn-cont'>
-                        <ButtonPrimary text='VER TODO'/>
+                    <TitleLine text={'Mas de este Phasioner'}/>
+                    <ProductsList />
+                    <div className='view-more'>
+                        <div className='line'></div>
+                        <div className='btn-cont'>
+                            <ButtonPrimary text='VER TODO'/>
+                        </div>
+                        <div className='line'></div>
                     </div>
-                    <div className='line'></div>
                 </div>
-            </div>
-            </div>
+            </div> : <Loader/>
+            }
+            
             <BannerLogPRO />
         </DetailCont>
     )
@@ -84,6 +105,7 @@ const DetailCont = styled.section`
 
     .detail-product{
         display: flex;
+        width: 100%;
         /* flex-wrap: wrap; */
     }
 
