@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 
 // images 
-// import Vestido from '../../,,/../../Images/vestido.jpg'
+// import Vestido  from '../../,,/../../Images/vestido.jpg'
 
 // icons
 import favorite from '../../../Images/favoriteoff.svg'

@@ -1,5 +1,6 @@
 import React, { useState, createContext, ReactNode } from 'react'
 import { ArmaryModel } from '../Models/armary_model';
+import { CategoryModel } from '../Models/category_model';
 import { ProductModel } from '../Models/product_model';
 import { UserModel } from '../Models/user_models'
 
@@ -23,6 +24,9 @@ export const ProductContextProvider = ({children}: AuxProps) => {
   const [products, setProducts] = useState<ProductModel>()
   const [detailprod, setDetailProd] = useState<ProductModel>()
 
+  // Categorys
+  const [categories, setCategories] = useState<CategoryModel[]>([])
+
 //   useEffect(() => {
 //     if (!jwt) return setFavs([])
 //     // getFavs({jwt}).then(setFavs)
@@ -40,6 +44,8 @@ export const ProductContextProvider = ({children}: AuxProps) => {
             setArmarys,
             detailprod,
             setDetailProd,
+            categories,
+            setCategories,
           }}>
       {children}
     </ProductContext.Provider>

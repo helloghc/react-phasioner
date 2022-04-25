@@ -10,7 +10,7 @@ export default function ProductCard({product}: {product: ProductModel}) {
     return (
         <Link href={`/${product.id}`}>      
             <CardContent>
-                <img src={product.image?.at(0)} alt='hola'/>
+                <img src={product.image?.at(0)} alt={product.titleProduct}/>
                 <div className='title'>
                     <div className='line'></div>
                     <h4>{product.titleProduct.substring(0, 20)}</h4>

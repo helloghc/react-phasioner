@@ -8,7 +8,6 @@ export default function useArmary () {
     const getArmarys = useCallback( async () => {
         const response = await getArmary();
         const products = await response.json();
-        console.log(products);
         setArmarys(products);
     }, [setArmarys])
 

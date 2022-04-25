@@ -1,23 +1,29 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import useCategory from '../../../Hooks/useCategory';
+import { CategoryModel } from '../../../Models/category_model';
+
 export default function CategotyNav() {
+
+    const { categories }: {categories: CategoryModel[]} = useCategory();
+
     return (
         <CategorySection>
-            
-                <ItemSelector selected={true}>Hombres</ItemSelector>
-                <ItemSelector selected={false}>Mujeres</ItemSelector>
-                <ItemSelector selected={false}>Niños</ItemSelector>
-                <ItemSelector selected={false}>Diseñadores</ItemSelector>
-                <ItemSelector selected={false}>Otros</ItemSelector>
-                
+            {
+                categories.map(category => {
+                    return <ItemSelector selected={false}>{category.nameCategory}</ItemSelector>
+                })
+            }
         </CategorySection>
     )
+
+}
+interface ItemSelectorProps {
+    selected: boolean
 }
 
-
-
-const ItemSelector = styled.button(props => ({
+const ItemSelector = styled.button<ItemSelectorProps>(props => ({
     background: props.selected ? '#13D4E6' : '#ffffff',
     border: 'none',
     borderRadius: '5px',

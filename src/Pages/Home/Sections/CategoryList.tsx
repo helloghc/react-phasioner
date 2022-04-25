@@ -1,14 +1,23 @@
 import React from 'react'
 import styled from 'styled-components'
 import CategoryCard from '../../../Components/CategoryCard'
+import useCategory from '../../../Hooks/useCategory'
+import { CategoryModel } from '../../../Models/category_model';
 
 export default function CategoryList() {
+    const { categories }: {categories: CategoryModel[] } = useCategory();
     return (
         <CategoryContent>
             <div className='cont'>
-
-                <CategoryCard 
-                    name={'Hombres'}
+                {
+                    categories.map((categorie) => {
+                        return <CategoryCard 
+                        name={categorie.nameCategory}
+                    />
+                    })
+                }
+                {/* <CategoryCard 
+                    name={categories.at(0)?.nameCategory}
                 />
                 <CategoryCard 
                     name={'Mujeres'}
@@ -18,7 +27,7 @@ export default function CategoryList() {
                 />
                 <CategoryCard 
                     name={'Diseñadores'}
-                />
+                /> */}
             </div>
         </CategoryContent>
     )
