@@ -1,13 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import TitleLine from '../../../Components/TitleLine';
 import CategotyNav from '../Components/CategotyNav';
 import ProductsList from '../Components/ProductsList';
 import ButtonPrimary from '../../../Components/ButtonPrimary';
+import useSpotlight from '../../../Hooks/useSpotlight';
 
 export default function ProductsGreat() {
 
 
+
+    const { spotProducts, getSpotProduts } = useSpotlight();
+
+    useEffect(() => {
+        getSpotProduts();
+    }, [getSpotProduts]);
   
     return (
         <ProductListGreat>
@@ -17,7 +24,7 @@ export default function ProductsGreat() {
                 />
                 <br/>
                 <CategotyNav/>
-                <ProductsList/>
+                <ProductsList products={spotProducts}/>
                 <div className='view-more'>
                     <div className='line'></div>
                     <div className='btn-cont'>

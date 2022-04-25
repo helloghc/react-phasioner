@@ -5,7 +5,7 @@ import Resume from './Sections/Resume';
 import BannerLogPRO from '../../Components/BannerLogPRO'
 
 
-import ProductsList from '../Home/Components/ProductsList'
+// import ProductsList from '../Home/Components/ProductsList'
 import ButtonPrimary from '../../Components/ButtonPrimary'
 
 import TitleLine from '../../Components/TitleLine'
@@ -22,6 +22,7 @@ export default function DetailsPage({ prodID }: { prodID: string }) {
     : {detailprod: DetailsProductModel, getDetailProduts: ({id}: {id:string}) => {}, isLoadDetail: boolean} = useProduct();
 
     useEffect(() => {
+        console.log('looaded?');
         window.scrollTo(0, 0);
         getDetailProduts({ id: prodID });
 
@@ -30,7 +31,7 @@ export default function DetailsPage({ prodID }: { prodID: string }) {
     return (
         <DetailCont>
             {
-                !isLoadDetail ?
+                !isLoadDetail  ?
                 <div className='conteno'>
                 <div className='rute-path'>
                     <h4>Inicio / {detailprod.productData?.category} / {detailprod.productData?.garment} / {detailprod.productData?.titleProduct}</h4>
@@ -46,7 +47,7 @@ export default function DetailsPage({ prodID }: { prodID: string }) {
 
                 <div className='more'>
                     <TitleLine text={'Mas de este Phasioner'}/>
-                    <ProductsList />
+                    {/* <ProductsList /> */}
                     <div className='view-more'>
                         <div className='line'></div>
                         <div className='btn-cont'>

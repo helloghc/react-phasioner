@@ -4,7 +4,7 @@ import { getDetailsProducts } from '../Services/get_detail_product'
 
 export default function useProduct () {
     const { detailprod, setDetailProd } = useContext(ProductContext);
-    const [ states, setStates ] = useState({load: false, error: false});
+    const [ states, setStates ] = useState({load: true, error: false});
 
     const getDetailProduts = useCallback( async ({id}: {id: string}) => {
         try {

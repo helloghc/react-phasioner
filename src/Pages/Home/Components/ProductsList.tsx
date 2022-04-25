@@ -1,22 +1,17 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import useSpotlight from '../../../Hooks/useSpotlight';
 import { ProductModel } from '../../../Models/product_model';
 import ProductCard from './ProductCard';
 
 
-export default function ProductsList() {
-    const { spotProducts, getSpotProduts } = useSpotlight();
+export default function ProductsList({products}: {products: ProductModel[]}) {
 
-    useEffect(() => {
-        getSpotProduts();
-    }, [getSpotProduts]);
 
     return (
         <ListContainer>
             {
-                spotProducts !== null ?
-                spotProducts?.map((product: ProductModel) => (
+                products !== null ?
+                products?.map((product: ProductModel) => (
                     <ProductCard 
                         key={product.id} 
                         product={product}

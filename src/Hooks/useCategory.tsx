@@ -8,7 +8,6 @@ export default function useCategory () {
     const getCategoriesList = useCallback( async () => {
         const response = await getCategories();
         const products = await response.json();
-        console.log(products);
         setCategories(products);
     }, [setCategories])
 
