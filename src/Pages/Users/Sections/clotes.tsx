@@ -13,7 +13,10 @@ export default function Clotes() {
       <ClotesLayout>
         <div className='option-clotes'>
             <div className='clotes-btn'>
-                <ButtonPrmary text={'SUBIR ARTÍCULO'}/>
+                <ButtonPrmary 
+                    onclick={() => {}}
+                    text={'SUBIR ARTÍCULO'}
+                />
             </div>
             <div className='clotes-filters'>
                 <h4>{profile?.products.length ?? 0} ARTÍCILOS</h4>
@@ -30,7 +33,6 @@ export default function Clotes() {
                         return <ClotesProduct product={product}/>
                     })
                 }
-              
             </div>
         </div>
       </ClotesLayout>

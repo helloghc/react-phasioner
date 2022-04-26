@@ -93,7 +93,8 @@ var Headin = styled.div`
         font-weight: 400;
         align-items: center;
         justify-content: center;
-        align-self: center;        
+        align-self: center;    
+        font-family: 'avenir-book';    
     }
 
     .btns-actions{

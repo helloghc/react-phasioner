@@ -297,6 +297,7 @@ const Navbar = styled.nav`
 
     .nav-content ul {
         display: flex;
+        font-family: 'avenir-book';
     }
 
     .btn-content{

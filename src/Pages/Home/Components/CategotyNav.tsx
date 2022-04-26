@@ -6,13 +6,21 @@ import { CategoryModel } from '../../../Models/category_model';
 
 export default function CategotyNav() {
 
-    const { categories }: {categories: CategoryModel[]} = useCategory();
+    const { categories, categorieNav,setCategorieFilter }: {categories: CategoryModel[], categorieNav: string, setCategorieFilter:(categorie: string) => void} = useCategory();
 
     return (
         <CategorySection>
             {
                 categories.map(category => {
-                    return <ItemSelector selected={false}>{category.nameCategory}</ItemSelector>
+                    return <ItemSelector
+                    key={category.id}
+                    onClick={() => {
+                        setCategorieFilter(category.id)
+                    }}
+                    selected={categorieNav === category.id}>
+                        {category.nameCategory}
+                    
+                    </ItemSelector>
                 })
             }
         </CategorySection>

@@ -26,7 +26,8 @@ export const ProductContextProvider = ({children}: AuxProps) => {
 
   // Categorys
   const [categories, setCategories] = useState<CategoryModel[]>([])
-
+  const [categorieNav, setCategorieNav] = useState<string>('')
+ 
 //   useEffect(() => {
 //     if (!jwt) return setFavs([])
 //     // getFavs({jwt}).then(setFavs)
@@ -46,6 +47,8 @@ export const ProductContextProvider = ({children}: AuxProps) => {
             setDetailProd,
             categories,
             setCategories,
+            categorieNav,
+            setCategorieNav,
           }}>
       {children}
     </ProductContext.Provider>

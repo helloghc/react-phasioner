@@ -19,6 +19,7 @@ var ButtonS = styled.button`
     font-size: 1em;
     text-align: center;
     cursor: pointer;
+    font-family: 'avenir-book';
     padding: 0.8em 0em;
 
 `

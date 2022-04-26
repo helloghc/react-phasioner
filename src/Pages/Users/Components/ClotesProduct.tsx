@@ -28,7 +28,9 @@ export default function ClotesProduct({ product }: { product: ProductModel }) {
                     <p>Publicado:<br/> <br/>{moment(product.createdAt).format('MMMM Do YYYY')}</p>
                 </div>
                 <div className='detail-action'>
-                    <ButtonPrimary text={'REACTIVAR ARTICULO'}/>
+                    <ButtonPrimary 
+                        onclick={() => {}}
+                        text={'REACTIVAR ARTICULO'}/>
                 </div>
        
         </div>

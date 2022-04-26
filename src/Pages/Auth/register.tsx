@@ -36,7 +36,9 @@ export default function Register() {
                 type='password'
             />
             <br/>
-            <ButtonPrimary text={'Registrate'}/>
+            <ButtonPrimary 
+                onclick={() => {}}
+                text={'Registrate'}/>
             <p>¿Ya tienes cuenta? <Link href='/login'> Inicia sesión</Link></p>
         </form>
     </LoginPage>

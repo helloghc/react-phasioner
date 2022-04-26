@@ -5,12 +5,13 @@ import CategotyNav from '../Components/CategotyNav';
 import ProductsList from '../Components/ProductsList';
 import ButtonPrimary from '../../../Components/ButtonPrimary';
 import useSpotlight from '../../../Hooks/useSpotlight';
+import useCategory from '../../../Hooks/useCategory';
 
 export default function ProductsGreat() {
 
-
-
     const { spotProducts, getSpotProduts } = useSpotlight();
+
+    const { categorieNav } = useCategory();
 
     useEffect(() => {
         getSpotProduts();
@@ -24,11 +25,19 @@ export default function ProductsGreat() {
                 />
                 <br/>
                 <CategotyNav/>
-                <ProductsList products={spotProducts}/>
+                <ProductsList 
+                
+                    products={spotProducts?.filter((items: any) => {
+                        if(categorieNav === '') {
+                            return items;
+                        } else {
+                            return  items.categoryId === categorieNav;
+                        }
+                })}/>
                 <div className='view-more'>
                     <div className='line'></div>
                     <div className='btn-cont'>
-                        <ButtonPrimary text='VER TODO'/>
+                        <ButtonPrimary text='VER TODO'  onclick={() => {}}/>
                     </div>
                     <div className='line'></div>
                 </div>
@@ -84,6 +93,7 @@ const ProductListGreat = styled.section`
         text-align: center;
         font-size: 1.5em;
         font-weight: 300;
+        font-family: 'avenir-book';
     }
 
     @media screen and (max-width: 700px){

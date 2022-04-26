@@ -30,7 +30,9 @@ export default function Login() {
                 type='password'
             />
             <br/>
-            <ButtonPrimary text={'Iniciar sesión'}/>
+            <ButtonPrimary 
+                onclick={() => {}}
+                text={'Iniciar sesión'}/>
             <p>¿No tienes cuenta? <Link href='/register'> Registrate</Link></p>
         </form>
     </LoginPage>

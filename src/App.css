@@ -2,6 +2,20 @@
   text-align: center;
 }
 
+@font-face {
+  font-family: "avgard";
+  src: url("./fonts/AVGARDD.TTF");
+
+  font-family: "avenir-book";
+  src: url("./fonts/AvenirLTStd-Book.otf");
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
 
 .spacerw10{
   width: 4em;

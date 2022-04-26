@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import AvatarUser from '../../../Components/AvatarUser';
 import ButtonPrimary from '../../../Components/ButtonPrimary'
-import User from '../../../Images/user1.jpg'
+// import User from '../../../Images/user1.jpg'
 import Start from '../../../Images/star.svg'
 import ButtonSecondary from '../../../Components/ButtonSecondary';
 import { Link } from 'wouter';
@@ -15,7 +15,9 @@ export default function Resume({ prod, user }: { prod: ProductModel, user: UserM
             <h1 className='produc-name'>{prod.titleProduct}</h1>
             <h2 className='price'>${prod.price}</h2>
             <Link href={'/order'}>
-                <ButtonPrimary text={'Comprar ahora'}/>
+                <ButtonPrimary 
+                    onclick={() => {}}
+                    text={'Comprar ahora'}/>
             </Link>
             <div className='description'>
                 <p><strong>Etiqueta de marca: </strong> {prod.brand}</p>

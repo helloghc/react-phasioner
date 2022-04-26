@@ -46,6 +46,7 @@ const CardContent = styled.div`
         
         h4{
             font-weight: 300;
+            font-family: 'avenir-book';
         }
     }
 

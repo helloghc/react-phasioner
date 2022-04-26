@@ -51,7 +51,9 @@ export default function DetailsPage({ prodID }: { prodID: string }) {
                     <div className='view-more'>
                         <div className='line'></div>
                         <div className='btn-cont'>
-                            <ButtonPrimary text='VER TODO'/>
+                            <ButtonPrimary 
+                                onclick={() => {}}
+                                text='VER TODO'/>
                         </div>
                         <div className='line'></div>
                     </div>

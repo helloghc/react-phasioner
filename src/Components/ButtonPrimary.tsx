@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export default function ButtonPrimary({text}) {
+export default function ButtonPrimary({text, onclick}: {text: string, onclick: () => void | undefined}) {
     return (
-        <ButtonP>
+        <ButtonP  onClick={onclick}>
           {text}  
         </ButtonP>
     )
@@ -20,6 +20,7 @@ var ButtonP = styled.button`
     font-size: 1rem;
     text-align: center;
     cursor: pointer;
+    font-family: 'avenir-book';
     padding: 0.8em 0em;
 
 `

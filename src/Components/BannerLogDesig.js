@@ -65,6 +65,7 @@ const BanContain = styled.section`
    }
    .con h2 {
         font-weight: 300;
+        font-family: 'avenir-book';
    }
    .con h3 {
         font-weight: 300;

@@ -2,8 +2,10 @@ import React from 'react'
 import Baner from '../../../Images/headerimg.jpg'
 import styled from 'styled-components'
 import ButtonPrimary from '../../../Components/ButtonPrimary'
+import { useLocation } from 'wouter'
 
 export default function BannerCarrousel() {
+    const [, navigate] = useLocation();
     return (
         <BanerCarrousel className="slider" src={Baner}>
             <div className='container-banner'>
@@ -11,7 +13,9 @@ export default function BannerCarrousel() {
                     <h2>Phasioner PRO</h2>
                     <h1>TU CLOSET, <br/>UN GRAN NEGOCIO</h1>
                     <div className='btn-content'>
-                        <ButtonPrimary text='¡VENDER YA!'/>
+                        <ButtonPrimary 
+                            onclick={() => {navigate('/login')}}
+                            text='¡VENDER YA!'/>
                     </div>
                 </div>
             </div>
@@ -43,10 +47,12 @@ const BanerCarrousel = styled.div<BannerProps>`
     
     .slider-container h2{
         font-weight: 300;
+        font-family: 'avenir-book';
     }
     .slider-container h1{
         font-weight: 500;
         font-size: 50px;
+        font-family: 'avenir-book';
     }
 
 

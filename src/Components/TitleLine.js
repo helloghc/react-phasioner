@@ -22,6 +22,7 @@ const TitleLineCont = styled.div`
         text-align: center;
         font-size: 1.5em;
         font-weight: 300;
+        font-family: 'avenir-book';
 
     }
 

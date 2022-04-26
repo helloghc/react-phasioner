@@ -3,8 +3,12 @@ import ButtonPrimary from './ButtonPrimary'
 import LogoPro from '../Images/logobanwhite.svg'
 import BanPro from '../Images/proimg.jpg'
 import styled from 'styled-components'
+import { useLocation } from 'wouter'
 
 export default function BannerLogPRO() {
+
+    const [, navigate] = useLocation()
+
     return (
         <BanCntain>
             <div className='register-card'>
@@ -12,7 +16,9 @@ export default function BannerLogPRO() {
                     <div className='btn-container'>
                     <img src={LogoPro}  alt='Logo'/>
                         <h3>VENDE YA</h3>
-                        <ButtonPrimary text={'Registrarte'} />
+                        <ButtonPrimary 
+                            onclick={() => navigate('/register')}
+                            text={'Registrarte'}/>
                     </div>
                 </div>
             </div>
