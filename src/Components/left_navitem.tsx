@@ -34,6 +34,7 @@ const ItemVar = styled.div`
     }
 
     @media screen and (max-width: 1000px) {
+      
       .imag {
           min-width: 2em;
           max-width: 2em;

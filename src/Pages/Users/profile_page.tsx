@@ -7,7 +7,7 @@ import Clotes from './Sections/clotes';
 
 
 export default function ProfilePage({ id }: { id: string }) {
-  const { getDataUserID } = useUser();
+  const { getDataUserID, profile } = useUser();
 
   useEffect(() => {
     getDataUserID({ id: id });
@@ -17,7 +17,7 @@ export default function ProfilePage({ id }: { id: string }) {
   return (
     <ProfileLayout>
         <div className='layout' >
-            <h4>Inicio / Mi Perfil </h4>
+            <h4>Inicio / {profile?.name.split(' ')[0].toUpperCase() ?? 'user12'} </h4>
             <HeaderUser/>
             <p className='spacerH10'></p>
             <TabBar/>

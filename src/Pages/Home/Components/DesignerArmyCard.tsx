@@ -6,12 +6,16 @@ import Start from '../../../Images/star.svg'
 import ButtonSecondary from '../../../Components/ButtonSecondary'
 import ProductCard from './ProductCard'
 import { ArmaryModel } from '../../../Models/armary_model'
+import { useLocation } from 'wouter'
 
 export default function DesignerArmyCard({armary}: {armary: ArmaryModel}) {
+    const [, navigate] = useLocation();
     return (
         <DesignerCard>
             <div className='user-contain'>
-                <div className='user-card'>
+                <div className='user-card' onClick={()=> {
+                    navigate(`/profile/${armary.user.id}`)
+                }}>
                     <AvatarUser src={armary.user.photoURL}/>
                     <div className='user-info'>     
                         <h3>{armary.user.name}</h3>
@@ -53,7 +57,7 @@ const DesignerCard = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-
+        cursor: pointer;
     }
 
     .user-info{
