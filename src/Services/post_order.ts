@@ -4,19 +4,7 @@ import { API_URL } from "./settings";
 
 export  default function postOrder ({token, prod, card, total}
      : {token: string, prod: ProductModel, card:PaymentCardModel, total:string}) {
-    console.log(JSON.stringify({
-        "product_id": prod.id!,
-        "delivery_type": 'Entrega en persona',
-        "addres_id": 'Direccion 12',
-        "method_pay": "card",
-        "description":
-            `"Compra de ${prod.titleProduct} por ${prod.price} MXN"`,
-        "device_session_id": 'info.androidId',
-        "payment_id": card!.id,
-        "status": "waiting",
-        "state": "initial",
-        "amount": total,
-      }))
+
     return fetch(`${API_URL}/order`, {
         method: 'POST',
         body: JSON.stringify({

@@ -13,24 +13,11 @@ export default function useNewOrder () {
     
     
     const newOrder = useCallback( async ({total}: {total: string}) => {
-       const newOrder = {
-            "product_id": productBuy.id!,
-            "delivery_type": 'Entrega en persona',
-            "addres_id": 'Direccion 12',
-            "method_pay": "card",
-            "description":
-                `"Compra de ${productBuy.titleProduct} por ${productBuy.price} MXN"`,
-            "device_session_id": 'info.androidId',
-            "payment_id": cardPaymentSelect!.id,
-            "status": "waiting",
-            "state": "initial",
-            "amount": total,
-          };
 
           const resolve = await postOrder({token: jwt, prod: productBuy, card: cardPaymentSelect, total: total});
           console.log(resolve)
-          // navigate('/order');
-    }, [cardPaymentSelect, jwt])
+          navigate('/');
+    }, [cardPaymentSelect, jwt, navigate])
 
 
 
