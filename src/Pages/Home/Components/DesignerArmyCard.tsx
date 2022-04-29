@@ -7,9 +7,11 @@ import ButtonSecondary from '../../../Components/ButtonSecondary'
 import ProductCard from './ProductCard'
 import { ArmaryModel } from '../../../Models/armary_model'
 import { useLocation } from 'wouter'
+import useGetFollows from '../../../Hooks/Follows/usegetfollows'
 
 export default function DesignerArmyCard({armary}: {armary: ArmaryModel}) {
     const [, navigate] = useLocation();
+    const {followers, newFollow} = useGetFollows();
     return (
         <DesignerCard>
             <div className='user-contain'>
@@ -23,7 +25,18 @@ export default function DesignerArmyCard({armary}: {armary: ArmaryModel}) {
                     </div>
                 </div>
                 <div className='user-actions'>
-                    <ButtonSecondary text={'Seguir'}/>
+                    {
+                        followers.indexOf(armary.user.id) !== -1 ? <ButtonSecondary 
+                        ontap={()=>{
+                            newFollow({id: armary.user.id});
+                        }}
+                        text={'Dejar de seguir'}/> : <ButtonSecondary 
+                        ontap={()=>{
+                            newFollow({id: armary.user.id});
+                        }}
+                        text={'Seguir'}/>
+                    }
+                    
                 </div>
             </div>
             <div className='products-contain'>

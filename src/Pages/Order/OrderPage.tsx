@@ -1,51 +1,58 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import TitleCategory from '../Categories/Components/TitleCategory';
 import DetailPay from './Sections/DetailPay';
 import HistoryProduct from './Sections/HistoryProduct';
-import InputTextPrimary from '../../Components/InputTextPrimary';
-import DropIcon from '../../Images/dropicon.svg'
+import ProductContext from '../../Contexts/products_context';
+import { ProductModel } from '../../Models/product_model';
+import useGetCards from '../../Hooks/Payments/use_get_cards';
+import Radiobutton from './Components/radio_button';
+import { PaymentCardModel } from '../../Models/payment_card_model';
 
 
 export default function OrderPage() {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen] = useState(false);
+    const { productBuy, cardPaymentSelect }:{ productBuy: ProductModel, cardPaymentSelect: PaymentCardModel} = useContext(ProductContext);
+    const {myCards}: {myCards: PaymentCardModel[]} = useGetCards();
 
-    onselect = () => {
-            setIsOpen(!isOpen);
-    }
     return (
-        <OrderCont>
-            <div className='layout'>
-                <div className='rute-path'>
-                        <h4>Inicio / Mujer / Vestidos / Vestido ZARA</h4>
-                </div>
-                <TitleCategory title={'Pedido'}/>
-                <div className='detail-order'>
-                    <HistoryProduct />
-                    <DetailPay />
-                </div>
-                <div className='add-more-info'>
-                <InputTextPrimary placeholder={'Añadir dirección'}/>
-                <br/>
-                <div className='payment-method' onClick={onselect}>
-                    <h3>Selecciona un método de pago</h3>
-                    
-                    <img src={DropIcon} alt='drop'/>
-                </div>
-                    <DropMethod isOpen={isOpen}>
-                        <p className='item-method'>Tarjeta de débito</p>
-                        <p className='item-method'>Tarjeta de Crédito</p>
-                        <p className='item-method'>Transferencia</p>
-                        <p className='item-method'>Pago con bitcoin</p>
-                    </DropMethod>
-            </div>
-            </div>
+        <OrderCont isOpen={isOpen}>
+                <div className='layout'>
+                    <div className='rute-path'>
+                            <h4>Inicio / {productBuy.category} / {productBuy.garment} / {productBuy.titleProduct}</h4>
+                    </div>
+                    <TitleCategory title={'Pedido'}/>
+                    {
+                        cardPaymentSelect ?
+                            <div className='detail-order'>
+                                <HistoryProduct />
+                                <DetailPay />
+                            </div> 
+                            : 
+                            <div>
+                                <h1>Selecciona tu método de pago</h1>
+                                {
+                                    myCards?.map((e)=>{
+                                    return <Radiobutton 
+                                        key={e.id} 
+                                        card={e}/>
+                                     
+                                    })
+                                }  
+                            </div>
+                    }
+                   
+                </div> 
+              
         </OrderCont>
     )
 }
 
+interface OrderProps {
+    isOpen: boolean
+}
 
-const OrderCont = styled.section`
+const OrderCont = styled.section<OrderProps>`
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -105,7 +112,7 @@ const OrderCont = styled.section`
 
 `;
 
-const DropMethod = styled.div`
+const DropMethod = styled.div<OrderProps>`
 
 
 ${(props) => {

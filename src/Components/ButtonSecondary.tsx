@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export default function ButtonSecondary({text}) {
+export default function ButtonSecondary({text, ontap}: {text: string, ontap:()=>void}) {
     return (
-        <ButtonS>
+        <ButtonS onClick={ontap}>
             {text}
         </ButtonS>
     )

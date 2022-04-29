@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext, ReactNode } from 'react'
+import React, { useState, createContext, ReactNode } from 'react'
 import { UserModel } from '../Models/user_models'
 
 const dataDefault: UserModel = {
@@ -15,23 +15,25 @@ interface AuxProps {
 const Context = createContext<any>(dataDefault);
 
 export const UserContextProvider = ({children}: AuxProps) => {
-  const [favs, setFavs] = useState([])
   const [user, setUser] = useState<UserModel>()
   const [profile, setProfile] = useState<UserModel>()
   const [jwt, setJWT] = useState(
     () => window.sessionStorage.getItem('jwt')
   )
 
-  useEffect(() => {
-    if (!jwt) return setFavs([])
-    // getFavs({jwt}).then(setFavs)
-  }, [jwt])
+  const [followers, setFollowers] = useState<string[]>([]);
+
+
+  // useEffect(() => {
+  //   if (!jwt) return setFavs([])
+  //   // getFavs({jwt}).then(setFavs)
+  // }, [jwt])
 
   return (
     <Context.Provider value={{
-           favs,
+      followers,
            jwt,
-           setFavs,
+           setFollowers,
            setJWT,
            user,
            setUser,

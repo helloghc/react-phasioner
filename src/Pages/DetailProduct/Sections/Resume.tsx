@@ -8,15 +8,20 @@ import ButtonSecondary from '../../../Components/ButtonSecondary';
 import { Link } from 'wouter';
 import { ProductModel } from '../../../Models/product_model';
 import { UserModel } from '../../../Models/user_models';
+import useTakeOrder from '../../../Hooks/Orders/useTakeOrder';
 
 export default function Resume({ prod, user }: { prod: ProductModel, user: UserModel }) {
+    const {takeOrder} = useTakeOrder();
     return (
         <ResumeConten>
             <h1 className='produc-name'>{prod.titleProduct}</h1>
             <h2 className='price'>${prod.price}</h2>
             <Link href={'/order'}>
                 <ButtonPrimary 
-                    onclick={() => {}}
+                    onclick={() => {
+                        // navigate('/order')
+                        takeOrder({prod: prod});
+                    }}
                     text={'Comprar ahora'}/>
             </Link>
             <div className='description'>
@@ -34,7 +39,9 @@ export default function Resume({ prod, user }: { prod: ProductModel, user: UserM
                     </div>
                 </div>
                 <div className='user-actions'>
-                    <ButtonSecondary text={'Seguir'}/>
+                    <ButtonSecondary 
+                        ontap={()=>{}}
+                        text={'Seguir'}/>
                     
                 </div>
             </div>

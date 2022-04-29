@@ -22,9 +22,10 @@ export default function useProduct () {
 
     }, [setDetailProd])
 
-    // useEffect(() => {
-    //     getSpotProduts();
-    // } , [getSpotProduts])
+
+
+
+
 
 
     return {

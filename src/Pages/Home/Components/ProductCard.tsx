@@ -1,28 +1,38 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 // import Pant from '../../../Images/pantalon.jpg'
-import FavOn from '../../../Images/favoriteoff.svg'
+import FavOn from '../../../Images/favoriteon.svg'
+import FavOff from '../../../Images/favoriteoff.svg'
 import { Link } from 'wouter'
 import { ProductModel } from '../../../Models/product_model'
+import ProductContext from '../../../Contexts/products_context'
+import useUser from '../../../Hooks/useUser'
 
 
 export default function ProductCard({product}: {product: ProductModel}) {
+    const { likeProduct } = useUser();
+    const { prodLikes }: {prodLikes: string[]} = useContext(ProductContext);
     return (
-        <Link href={`/${product.id}`}>      
-            <CardContent>
+        <CardContent>
+            <Link href={`/${product.id}`}>      
                 <img src={product.image?.at(0)} alt={product.titleProduct}/>
                 <div className='title'>
                     <div className='line'></div>
                     <h4>{product.titleProduct.substring(0, 20)}</h4>
                     <div className='line'></div>
                 </div>
+            </Link>
                 <div className='actions'>
                     <div></div>
                     <p>$ {product.price} MXN</p>
-                    <img src={FavOn} alt='favorito'/>
+                    {
+                        prodLikes.indexOf(product.id) !== -1 ?
+                        <img src={FavOn} alt='favorito' onClick={()=> likeProduct({id: product.id})}/>
+                        :
+                        <img src={FavOff} alt='favorito' onClick={()=> likeProduct({id: product.id})}/>
+                    }
                 </div>
             </CardContent>
-        </Link>
     )
 }
 

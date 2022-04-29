@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components';
 
-export default function LeftNavitem({image, name}: {image: string, name: string}) {
+export default function LeftNavitem({image, name, onAction}: {image: string, name: string, onAction:()=> void}) {
   return (
-    <ItemVar key={name}>
+    <ItemVar key={name} onClick={onAction}>
         <img src={image} alt={name} className='imag'/>
         <p>{name}</p>
     </ItemVar>

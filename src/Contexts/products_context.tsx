@@ -1,6 +1,7 @@
 import React, { useState, createContext, ReactNode } from 'react'
 import { ArmaryModel } from '../Models/armary_model';
 import { CategoryModel } from '../Models/category_model';
+import { PaymentCardModel } from '../Models/payment_card_model';
 import { ProductModel } from '../Models/product_model';
 import { UserModel } from '../Models/user_models'
 
@@ -27,6 +28,15 @@ export const ProductContextProvider = ({children}: AuxProps) => {
   // Categorys
   const [categories, setCategories] = useState<CategoryModel[]>([])
   const [categorieNav, setCategorieNav] = useState<string>('')
+
+  // Likes 
+  const [prodLikes, setProdLikes] = useState<string[]>([]);
+
+  // orders
+  const [productBuy, setProductBuy] = useState<ProductModel>();
+
+  const [myCards, setMyCards] = useState<PaymentCardModel[]>();
+  const [cardPaymentSelect, setCardPayment] = useState<PaymentCardModel>();
  
 //   useEffect(() => {
 //     if (!jwt) return setFavs([])
@@ -49,6 +59,14 @@ export const ProductContextProvider = ({children}: AuxProps) => {
             setCategories,
             categorieNav,
             setCategorieNav,
+            prodLikes,
+            setProdLikes,
+            productBuy,
+            setProductBuy,
+            cardPaymentSelect,
+            setCardPayment,
+            myCards,
+            setMyCards,
           }}>
       {children}
     </ProductContext.Provider>

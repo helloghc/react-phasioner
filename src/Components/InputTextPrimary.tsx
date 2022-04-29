@@ -1,7 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export default function InputTextPrimary({placeholder, name, type}) {
+interface InputProps {
+    placeholder: string;
+    name: string;
+    type: string
+}
+
+export default function InputTextPrimary({placeholder, name, type}: InputProps) {
     return (
         <InputContain>
             <input 

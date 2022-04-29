@@ -1,7 +1,7 @@
 import { API_URL } from "./settings";
 
-export function postFavoriteProducts ({id, token}: {id: string, token: string}) {
-    return fetch(`${API_URL}/products/${id}/likeme`, {
+export function getCardsPayments ({token}: {token: string}) {
+    return fetch(`${API_URL}/cards/mycards`, {
         method: 'POST',
         headers: {
             'Authorization': `Bearer ${token}`,

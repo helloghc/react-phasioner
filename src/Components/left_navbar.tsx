@@ -4,44 +4,71 @@ import useUser from '../Hooks/useUser';
 import LeftNavitem from './left_navitem';
 import ProdIcon from '../Images/PRODUCTOS.svg'
 import ChatIcon from '../Images/chat.png'
+import { useLocation } from 'wouter';
 
 export default function LeftNavbar() {
     const { user, isLogged } = useUser();
+    const [, navigate] = useLocation();
+
   return (
     <>
         {
             isLogged ?  <LeftNavbarLayout>
-            <LeftNavitem
-                image={user?.photoURL}
-                name={user?.name}
-            />
+                    <LeftNavitem
+                        image={user?.photoURL}
+                        name={user?.name}
+                        onAction={() => {
+                            navigate(`/profile/${user?.id}`)
+                        }}
+                    />
             <LeftNavitem
                 image={ProdIcon}
                 name='Productos'
+                onAction={() => {
+                    navigate(`/`)
+                }}
             />
             <LeftNavitem
                 image={ChatIcon}
                 name='Chat'
+                onAction={() => {
+                    navigate(`/`)
+                }}
             />
             <LeftNavitem
                 image={ChatIcon}
                 name='Favoritos'
+                onAction={() => {
+                    navigate(`/`)
+                }}
             />
             <LeftNavitem
                 image={ChatIcon}
                 name='Opiniones'
+                onAction={() => {
+                    navigate(`/`)
+                }}
             />
             <LeftNavitem
                 image={ChatIcon}
                 name='Estadisticas'
+                onAction={() => {
+                    navigate(`/`)
+                }}
             />
             <LeftNavitem
                 image={ChatIcon}
                 name='Billetera'
+                onAction={() => {
+                    navigate(`/`)
+                }}
             />
             <LeftNavitem
                 image={ChatIcon}
                 name='Phasioner PRO'
+                onAction={() => {
+                    navigate(`/`)
+                }}
             />
             
         </LeftNavbarLayout>

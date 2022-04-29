@@ -4,9 +4,15 @@ import Context from '../Contexts/user_context';
 import loginService from '../Services/login';
 import getDataUser from '../Services/get_profile'
 import getDataID from '../Services/get_user'
+import { getLikesofUsers } from "../Services/get_likesofuser";
+import ProductContext from '../Contexts/products_context';
+import { postFavoriteProducts } from '../Services/post_favorite_prod'
+
+
 
 export default function useUser () {
   const {favs, jwt, setJWT, user, setUser, profile, setProfile} = useContext(Context)
+  const { prodLikes, setProdLikes } = useContext(ProductContext)
   const [state, setState] = useState({ loading: false, error: false })
 
   const [ locatione, setLocation ] = useLocation();
@@ -39,7 +45,6 @@ export default function useUser () {
       const responseValidation = await getDataUser({token: token});
       if (responseValidation.status === 200) {
           const dataUser = await responseValidation.json();
-
           setUser(dataUser);
 
           return;
@@ -51,6 +56,28 @@ export default function useUser () {
     }
   }, [setUser, logout])
 
+  const validateLikes = useCallback(async({token}: {token:string}) =>{
+    try {
+        const likkes = await getLikesofUsers({token: token})
+        if(likkes.status === 201) {
+            setProdLikes(await likkes.json())
+            return;
+        }
+        
+    } catch (error) {
+        console.log(`soy el error ${error}`)
+    }
+}, [setProdLikes])
+
+  const likeProduct = useCallback(async ({id}: {id:string}) => {
+    if(jwt){
+        const response = await postFavoriteProducts({id: id, token: jwt});
+        setProdLikes(await response.json())
+        
+    } else {
+      setLocation('/login');
+    }
+  }, [jwt, setLocation, setProdLikes])
 
   // Get Data
   const getDataUserID = useCallback(async ({id}: {id:string}) => {
@@ -67,9 +94,10 @@ export default function useUser () {
   useEffect(() => {
     if(jwt){
       validateUserInit({token: jwt});
+      validateLikes({token: jwt});
     }
 
-  }, [jwt, validateUserInit])
+  }, [jwt, validateLikes, validateUserInit])
 
 
   
@@ -85,5 +113,7 @@ export default function useUser () {
     login,
     logout,
     getDataUserID,
+    prodLikes,
+    likeProduct,
   }
 } 

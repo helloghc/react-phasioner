@@ -1,26 +1,25 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import ProductContext from '../../../Contexts/products_context';
 
 
-// Images
-import Vestido from '../../../Images/vestido.jpg'
+import { ProductModel } from '../../../Models/product_model'
 
 export default function HistoryProduct() {
 
-
+    const {productBuy} : {productBuy: ProductModel} = useContext(ProductContext);
 
 
     return (
         <FirstLay>
             <CardHistory>
-                <img src={Vestido} alt='Vestido' className='image-card'/>
+                <img src={productBuy.image?.at(0)} alt='Vestido' className='image-card'/>
                 <div className='info-card'>
-                    <h3>Vestido ZARA</h3>
+                    <h3>{productBuy.titleProduct}</h3>
                     <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                       {productBuy.description}
                     </p>
-                    <h1>$200 MXN</h1>
+                    <h1>${productBuy.price} MXN</h1>
                 </div>
             </CardHistory>
             
